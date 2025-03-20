@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background: whitesmoke;
+        }
+        .container {
+            margin-top: 80px;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .certificate-card img {
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .skill-badge {
+            background: #007bff;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- User Certificates Section -->
+        <div>
+            <h2 class="section-title"><i class="fas fa-award"></i> My Certificates</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card certificate-card">
+                        <img src="certificate1.jpg" data-bs-toggle="modal" data-bs-target="#certificateModal1">
+                        <div class="card-body text-center">
+                            <p>Python Programming Certification</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card certificate-card">
+                        <img src="certificate2.jpg" data-bs-toggle="modal" data-bs-target="#certificateModal2">
+                        <div class="card-body text-center">
+                            <p>Data Science Certificate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Followers Achievements Section -->
+        <div class="mt-5">
+            <h2 class="section-title"><i class="fas fa-users"></i> Achievements of My Followers</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5>John Doe</h5>
+                            <p>Won 1st Place in AI Hackathon</p>
+                            <span class="badge bg-success">AI Expert</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5>Sarah Williams</h5>
+                            <p>Published a Research Paper on ML</p>
+                            <span class="badge bg-primary">Machine Learning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- My Skills Section -->
+        <div class="mt-5">
+            <h2 class="section-title"><i class="fas fa-lightbulb"></i> My Skill Set</h2>
+            <div>
+                <span class="skill-badge">C Programming</span>
+                <span class="skill-badge">MATLAB</span>
+                <span class="skill-badge">Embedded Systems</span>
+                <span class="skill-badge">Digital Signal Processing</span>
+            </div>
+        </div>
+
+        <!-- Other People's Skills -->
+        <div class="mt-5">
+            <h2 class="section-title"><i class="fas fa-user-friends"></i> Followers' Skill Sets</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5>Emily Johnson</h5>
+                            <span class="skill-badge">Web Development</span>
+                            <span class="skill-badge">UI/UX Design</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5>Michael Brown</h5>
+                            <span class="skill-badge">Cybersecurity</span>
+                            <span class="skill-badge">Ethical Hacking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Certificate Preview -->
+    <div class="modal fade" id="certificateModal1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Python Programming Certification</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="certificate1.jpg" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="certificateModal2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Data Science Certificate</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="certificate2.jpg" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

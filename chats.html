@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Page</title>
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background: #f0f2f5;
+        }
+        .chat-container {
+            display: flex;
+            height: 90vh;
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .user-list {
+            width: 30%;
+            background: #fff;
+            border-right: 1px solid #ddd;
+            overflow-y: auto;
+        }
+        .chat-box {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+        }
+        .messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .message {
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 70%;
+            margin-bottom: 10px;
+        }
+        .sent {
+            align-self: flex-end;
+            background: #dcf8c6;
+        }
+        .received {
+            align-self: flex-start;
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+        .message-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            background: white;
+        }
+        .message-input input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            background: #f0f2f5;
+        }
+        .message-input button {
+            margin-left: 10px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 20px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        .user {
+            padding: 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+        }
+        .user img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .user:hover {
+            background: #f0f2f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <!-- User List -->
+        <div class="user-list" id="userList"></div>
+        
+        <!-- Chat Box -->
+        <div class="chat-box">
+            <div class="messages" id="messages"></div>
+            <div class="message-input">
+                <input type="text" id="messageText" placeholder="Type a message...">
+                <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const users = [
+            { name: "Emily Johnson", img: "https://randomuser.me/api/portraits/women/1.jpg" },
+            { name: "Michael Brown", img: "https://randomuser.me/api/portraits/men/2.jpg" },
+            { name: "Sarah Williams", img: "https://randomuser.me/api/portraits/women/3.jpg" }
+        ];
+        
+        const userList = document.getElementById("userList");
+        const messagesDiv = document.getElementById("messages");
+        
+        users.forEach(user => {
+            let userDiv = document.createElement("div");
+            userDiv.classList.add("user");
+            userDiv.innerHTML = `<img src="${user.img}" alt="User"> <span>${user.name}</span>`;
+            userDiv.onclick = () => openChat(user);
+            userList.appendChild(userDiv);
+        });
+        
+        function openChat(user) {
+            messagesDiv.innerHTML = `<h5>Chat with ${user.name}</h5>`;
+        }
+        
+        function sendMessage() {
+            let messageText = document.getElementById("messageText").value;
+            if (messageText.trim() !== "") {
+                let messageDiv = document.createElement("div");
+                messageDiv.classList.add("message", "sent");
+                messageDiv.textContent = messageText;
+                messagesDiv.appendChild(messageDiv);
+                document.getElementById("messageText").value = "";
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+

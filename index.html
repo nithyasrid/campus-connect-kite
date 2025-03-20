@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Connect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='homestyle.css') }}">
+
+</head>
+<body>
+  
+  <div class="container">
+    <!-- Left Sidebar -->
+    <aside class="left-sidebar">
+      <h2>Campus Connect</h2>
+      <ul>
+        <li><a href="/profile">Profile</a></li> 
+        <li><a href="/explore">Explore</a></li> 
+        <li><a href="https://moodle.kgkite.ac.in/login/index.php">Study space</a></li>
+        <li><a href="/chats">Chats</a></li>
+        <li><a href="/anonymous">Anonymous Confessions</a></li>
+        <li><a href="/acheivements">Acheivements</a></li>
+           
+      </ul>
+      <div class="more-option">
+        <p><a href="more.html">More</a></p>
+      </div>
+    </aside>
+
+    <!-- Main Feed -->
+    <main class="feed">
+      <input type="text" placeholder="Search..." class="search-bar">
+      <div class="post">
+        <h3>@Vinish</h3>
+        <p>hi everybody</p>
+        <span>2 mins ago</span>
+      </div>
+
+      <div class="post">
+        <h3>@Sweetie</h3>
+        <p>Feeling cute today... might delete later </p>
+        <span>10 mins ago</span>
+      </div>
+    </main>
+
+    <!-- Right Sidebar -->
+    <aside class="right-sidebar">
+      <h2>ChatBot</h2>
+      <!--<p>"Enchance your Portfolio with us"</p>-->
+    </aside>
+    <!-- Right Sidebar Chatbot -->
+    <aside class="right-sidebar">
+        <div class="chatbot-header"></div>
+        <p style="text-align:center; font-size:14px; color:gray;"></p>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <p><b>Bot:</b> </p>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Ask me anything...">
+            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+        </aside>
+        
+    </aside>
+    
+    <script>
+        function sendMessage() {
+            let inputField = document.getElementById("chatInput");
+            let message = inputField.value.trim();
+            if (message === "") return;
+
+            let chatBox = document.getElementById("chatbotMessages");
+            chatBox.innerHTML += `<p><b>You:</b> ${message}</p>`;
+            inputField.value = "";
+            
+            setTimeout(() => {
+                let response = getChatbotResponse(message);
+                chatBox.innerHTML += `<p><b>Bot:</b> ${response}</p>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 1000);
+        }
+
+        function getChatbotResponse(message) {
+            let lowerMsg = message.toLowerCase();
+            
+            if (lowerMsg.includes("skills")) {
+                return "You have achieved skills in Web Development, Data Science, and AI! Keep going!";
+            } else if (lowerMsg.includes("certificates")) {
+                return "I found 3 certificates: Python, Machine Learning, and Cloud Computing. Would you like to add more?";
+            } else {
+                return "I am still learning! Try asking about your skills or certificates.";
+            }
+        }
+    </script>
+
+  </div>
+</body>
+</html>

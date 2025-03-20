@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <style>
+        /* LIGHT THEME (DEFAULT) */
+        :root {
+            --bg-color: white;
+            --text-color: black;
+            --panel-bg: white;
+            --sidebar-bg: #4a4a4d;
+            --btn-follow-bg: #0077b5;
+            --btn-message-bg: #e1306c;
+            --btn-settings-bg: #555;
+            --post-bg: white;
+            --shadow-color: rgba(0, 0, 0, 0.2);
+        }
+
+        /* DARK THEME */
+        .dark {
+            --bg-color: #121212;
+            --text-color: white;
+            --panel-bg: #333;
+            --sidebar-bg: #242526;
+            --btn-follow-bg: #005f99;
+            --btn-message-bg: #b02352;
+            --btn-settings-bg: #444;
+            --post-bg: #333;
+            --shadow-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            height: 90vh;
+            background: var(--panel-bg);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px var(--shadow-color);
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 35%;
+            background: var(--sidebar-bg);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            padding-top: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-bottom: 10px;
+        }
+
+        .profile-info h2 {
+            font-size: 18px;
+        }
+
+        .bio {
+            font-size: 14px;
+            color: #ddd;
+        }
+
+        .stats {
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .stats div {
+            margin: 10px 0;
+        }
+
+        /* Buttons */
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 80%;
+            text-align: center;
+        }
+
+        .btn-follow { background: var(--btn-follow-bg); color: white; }
+        .btn-message { background: var(--btn-message-bg); color: white; }
+        .btn-settings { background: var(--btn-settings-bg); color: white; }
+
+        /* Main Content */
+        .main-content {
+            width: 65%;
+            padding: 10px;
+        }
+
+        /* Posts */
+        .posts {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: auto;
+        }
+
+        .post {
+            background: var(--post-bg);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px var(--shadow-color);
+        }
+
+        /* SETTINGS PANEL */
+        .settings-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            background: var(--panel-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px var(--shadow-color);
+            display: none;
+        }
+
+        .settings-panel h3 {
+            margin-bottom: 10px;
+        }
+
+        .settings-panel .option {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .close-btn {
+            background: black;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <img src="https://source.unsplash.com/150x150/?person" alt="Profile Picture" class="profile-pic">
+            <div class="profile-info">
+                <h2>John Doe</h2>
+                <p class="bio">Tech Enthusiast | Developer | Creator</p>
+            </div>
+
+            <div class="stats">
+                <div><strong>5K</strong> Followers</div>
+                <div><strong>320</strong> Following</div>
+                <div><strong>120</strong> Posts</div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="buttons">
+                <button class="btn btn-follow">Follow</button>
+                <button class="btn btn-message">Message</button>
+                <button class="btn btn-settings" onclick="openSettings()">Settings</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="posts">
+                <div class="post">
+                    <h4>@JohnDoe</h4>
+                    <p>Excited to start my new project! 🚀</p>
+                </div>
+                <div class="post">
+                    <h4>@JohnDoe</h4>
+                    <p>Check out my latest blog on AI & ML! 🤖</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settingsPanel">
+        <h3>Settings</h3>
+        <div class="option">
+            <label>Dark Mode</label>
+            <input type="checkbox" id="darkModeToggle">
+        </div>
+        <div class="option">
+            <label>Notifications</label>
+            <input type="checkbox" checked>
+        </div>
+        <div class="option">
+            <label>Privacy</label>
+            <select>
+                <option>Public</option>
+                <option>Friends Only</option>
+                <option>Private</option>
+            </select>
+        </div>
+        <button class="close-btn" onclick="closeSettings()">Close</button>
+    </div>
+
+    <script>
+        function openSettings() {
+            document.getElementById("settingsPanel").style.display = "block";
+        }
+
+        function closeSettings() {
+            document.getElementById("settingsPanel").style.display = "none";
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const darkModeToggle = document.getElementById("darkModeToggle");
+            const body = document.body;
+
+            // Load saved theme from localStorage
+            if (localStorage.getItem("theme") === "dark") {
+                body.classList.add("dark");
+                darkModeToggle.checked = true;
+            }
+
+            // Toggle theme on checkbox change
+            darkModeToggle.addEventListener("change", function () {
+                if (this.checked) {
+                    body.classList.add("dark");
+                    localStorage.setItem("theme", "dark");
+                } else {
+                    body.classList.remove("dark");
+                    localStorage.setItem("theme", "light");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
